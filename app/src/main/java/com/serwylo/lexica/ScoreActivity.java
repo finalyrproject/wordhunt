@@ -91,6 +91,7 @@ public class ScoreActivity extends TabActivity {
 				int points = Game.WORD_POINTS[w.length()];
 				addWord(foundVG,w,points,0xff000000,true);
 				score += Game.WORD_POINTS[w.length()];
+				score = score +w.length() - 1;
 				words++;
 			} else {
 				addWord(foundVG,w,0,0xffff0000,false);
