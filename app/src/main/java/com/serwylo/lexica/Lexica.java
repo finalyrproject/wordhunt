@@ -80,7 +80,7 @@ public class Lexica extends Activity {
 				i.setData(u);
 				startActivity(i);
 			}
-		});
+		});*/
 
 		b = (Button) findViewById(R.id.preferences);
 		b.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class Lexica extends Activity {
 				startActivity(new 
 					Intent("com.serwylo.lexica.action.CONFIGURE"));
 			}
-		});*/
+		});
 	}
 
 	public void onPause() {
