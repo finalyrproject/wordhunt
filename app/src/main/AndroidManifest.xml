@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.serwylo.lexica"
+          package="com.wordhunt.wordhunt"
           android:versionCode="1"
           android:versionName="0.9.6">
 
@@ -10,14 +10,14 @@
         />
 
     <application android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme" android:allowBackup="true">
-        <activity android:name=".Lexica">
+        <activity android:name=".wordhunt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".PlayLexica">
+        <activity android:name=".Playwordhunt">
 			<intent-filter>
 				<action android:name="com.serwylo.lexica.action.NEW_GAME" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -35,7 +35,7 @@
 			</intent-filter>
         </activity>
 
-        <activity android:name=".LexicaConfig" android:exported="false">
+        <activity android:name=".wordhuntConfig" android:exported="false">
 			<intent-filter>
 				<action android:name="com.serwylo.lexica.action.CONFIGURE" />
 				<category android:name="android.intent.category.DEFAULT" />

@@ -81,13 +81,7 @@
 			android:layout_weight="1.0"
 			android:gravity="center"
 		>
-			<com.serwylo.lexica.view.BoardView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/missed_board"
-				android:layout_marginEnd="@dimen/padding"
-				android:layout_marginRight="@dimen/padding"
-			/>
+0
 
 			<ScrollView android:id="@+id/missed_scroll"
 				android:layout_width="0dp"

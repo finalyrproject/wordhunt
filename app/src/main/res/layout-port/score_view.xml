@@ -80,13 +80,7 @@
 			android:layout_weight="0.5"
 			android:gravity="center"
 		>
-			<com.serwylo.lexica.view.BoardView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:id="@+id/missed_board"
-				android:layout_marginBottom="@dimen/padding"
-			/>
+
 		</LinearLayout>
 
 		<ScrollView android:id="@+id/missed_scroll"
