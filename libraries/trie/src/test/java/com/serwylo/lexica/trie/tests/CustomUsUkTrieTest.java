@@ -69,7 +69,7 @@ public class CustomUsUkTrieTest extends TrieTest {
 			Trie deserializedAll = deserializer.deserialize(new ByteArrayInputStream(serialized), new CanTransitionMap(), true, true);
 			assertTrieMatches("After deserializing all words", deserializedAll, US_WORDS, UK_WORDS, BOTH_DIALECTS);
 
-			String[] aeinqt = new String[]{"a", "e", "i", "n", "qu", "t"};
+			String[] aeinqt = new String[]{"a", "e", "i", "n", "q", "t"};
 			String[] aeinqtUsWords = new String[]{};
 			String[] aeinqtUkWords = new String[]{"queen"};
 			String[] aeinqtBothWords = new String[]{"a", "quit", "aqua"};
