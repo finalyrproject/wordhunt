@@ -154,9 +154,9 @@ public class Game implements Synchronizer.Counter {
 		mSoundPool = new SoundPool(3,AudioManager.STREAM_MUSIC,100);
 		soundIds = new int[3];
 
-		soundIds[0] = mSoundPool.load(c,R.raw.sound1,1);
-		soundIds[1] = mSoundPool.load(c,R.raw.sound2,1);
-		soundIds[2] = mSoundPool.load(c,R.raw.sound3,1);
+		//soundIds[0] = mSoundPool.load(c,R.raw.sound1,1);
+		//soundIds[1] = mSoundPool.load(c,R.raw.sound2,1);
+		//soundIds[2] = mSoundPool.load(c,R.raw.sound3,1);
 
 		mgr = (AudioManager) c.getSystemService(Context.AUDIO_SERVICE); 
 	}
