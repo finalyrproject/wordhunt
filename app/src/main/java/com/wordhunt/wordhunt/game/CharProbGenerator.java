@@ -75,8 +75,8 @@ public class CharProbGenerator {
 		for(int i=0;i<size;i++) {
 			ProbabilityQueue pq = null;
 			int remaining = rng.nextInt(total);
-			// Log.d(TAG,"remaining:"+remaining+"/"+total);
-			for(int j=0;j<charProbs.size();j++) {
+
+				for(int j=0;j<charProbs.size();j++) {
 				pq = charProbs.get(j);
 				remaining -= pq.peekProb();
 				if(pq.peekProb() > 0 && remaining <= 0) {

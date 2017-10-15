@@ -44,8 +44,6 @@ public class ScoreActivity extends TabActivity {
 
 	private static final String TAG = "ScoreActivity";
 
-	public static final String DEFINE_URL = "http://www.google.com/search?q=define%3a+";
-
 	private Game game;
 	private BoardView bv;
 	private View highlighted;
@@ -70,8 +68,6 @@ public class ScoreActivity extends TabActivity {
 		host.addTab(host.newTabSpec("found").setIndicator(getString(R.string.found_words)).setContent(R.id.found_words));
 		host.addTab(host.newTabSpec("missed").setIndicator(getString(R.string.missed_words)).setContent(R.id.missed_words));
 
-		//bv = (BoardView) findViewById(R.id.missed_board);
-		//bv.setBoard(game.getBoard());
 
 		Set<String> possible = game.getSolutions().keySet();
 
@@ -185,21 +181,7 @@ public class ScoreActivity extends TabActivity {
 
 		ll.addView(tv1);
 
-		/*if(link) {
-			TextView tv3 = new TextView(this);
-			tv3.setGravity(Gravity.END);
-			tv3.setLayoutParams(text2Lp);
-			tv3.setTextSize(16);
-			tv3.setTextColor(0xff000000);
-			tv3.setText(R.string.define_word);
-
-			tv3.setOnClickListener(new DefinerListener(w));
-			tv3.setFocusable(true);
-
-			ll.addView(tv3);
-		}*/
-
-		ll.addView(tv2);
+		//ll.addView(tv2);
 
 		vg.addView(ll, new LinearLayout.LayoutParams(
 			ViewGroup.LayoutParams.FILL_PARENT,
@@ -228,28 +210,6 @@ public class ScoreActivity extends TabActivity {
 			ViewGroup.LayoutParams.WRAP_CONTENT,
 			ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		// The Word Highlighting Link
-		/*TextView tv2 = new TextView(this);
-		tv2.setGravity(Gravity.END);
-		tv2.setLayoutParams(text2Lp);
-		tv2.setTextSize(16);
-		tv2.setTextColor(0xff000000);
-		tv2.setText(R.string.view_word);
-
-		tv2.setOnClickListener(new HighlighterListener(solution.getPositions(),ll));
-		tv2.setFocusable(true);
-
-		// The Definition Link
-		TextView tv3 = new TextView(this);
-		tv3.setGravity(Gravity.END);
-		tv3.setLayoutParams(text2Lp);
-		tv3.setTextSize(16);
-		tv3.setTextColor(0xff000000);
-		tv3.setText(R.string.define_word);
-
-		tv3.setOnClickListener(new DefinerListener(w));
-		tv3.setFocusable(true);*/
-
 		// Padding between the links
 		TextView padding = new TextView(this);
 		padding.setGravity(Gravity.END);
@@ -258,10 +218,9 @@ public class ScoreActivity extends TabActivity {
 		padding.setText("        ");
 
 		ll.addView(tv1);
-		//ll.addView(tv2);
+
 		ll.addView(padding);
-		//ll.addView(tv3);
-			
+
 		vg.addView(ll, new LinearLayout.LayoutParams(
 			ViewGroup.LayoutParams.FILL_PARENT,
 			ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -285,21 +244,6 @@ public class ScoreActivity extends TabActivity {
 			}
 			highlighted = parentView;
 			highlighted.setBackgroundColor(0xffffff00);
-		}
-	}
-
-	private class DefinerListener implements View.OnClickListener {
-		final String word;
-
-		private DefinerListener(String word) {
-			this.word = word;
-		}
-
-		public void onClick(View v) {
-			Intent i = new Intent(Intent.ACTION_VIEW);
-			Uri u = Uri.parse(DEFINE_URL+word);
-			i.setData(u);
-			startActivity(i);
 		}
 	}
 

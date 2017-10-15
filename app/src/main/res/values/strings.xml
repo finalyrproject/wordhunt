@@ -4,7 +4,7 @@
 
     <string name="new_game">New Game</string>
     <string name="restore_game">Restore Game</string>
-	<string name="prefs">Preferences</string>
+	<string name="prefs">Settings</string>
 
 	<string name="pref_dict">Dictionary</string>
 	<string name="pref_dict_summary">Select a dictionary to use</string>
@@ -62,8 +62,8 @@
 	<string name="define_word"><u>Define</u> </string>
 
 	<string name="words">WORDS</string>
-	<string name="found_words">Found Words</string>
-	<string name="missed_words">About</string>
+	<string name="found_words">Words you Found</string>
+	<string name="missed_words">Words you Missed</string>
 	<string name="total_words">Total Words:</string>
 	<string name="total_score">Total Score:</string>
 	<string name="value_max_percentage">%1$d/%2$d </string>

@@ -51,42 +51,16 @@ public class wordhunt extends Activity {
 		// Log.d(TAG,"b="+b);
 		b.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent("com.serwylo.lexica.action.NEW_GAME"));
+				startActivity(new Intent("com.wordhunt.wordhunt.action.NEW_GAME"));
 			}
 		});
 
-		/*if(savedGame()) {
-			b = (Button) findViewById(R.id.restore_game);
-			b.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					if(savedGame()) {
-						// Log.d(TAG,"restoring game");
-						startActivity(new 
-							Intent("com.serwylo.lexica.action.RESTORE_GAME"));
-					} else {
-						// Log.d(TAG,"no saved game :(");
-						showDialog(DIALOG_NO_SAVED);
-					}
-				}
-			});
-			b.setEnabled(true);
-		}
-
-		b = (Button) findViewById(R.id.about);
-		b.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				Uri u = Uri.parse("https://github.com/lexica/lexica");
-				i.setData(u);
-				startActivity(i);
-			}
-		});*/
 
 		b = (Button) findViewById(R.id.preferences);
 		b.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new 
-					Intent("com.serwylo.lexica.action.CONFIGURE"));
+					Intent("com.wordhunt.wordhunt.action.CONFIGURE"));
 			}
 		});
 	}
@@ -101,27 +75,5 @@ public class wordhunt extends Activity {
 		splashScreen();
 	}
 
-	public boolean savedGame() {
-		return new GameSaverPersistent(this).hasSavedGame();
-	}
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch(id) {
-			case DIALOG_NO_SAVED:
-				return new AlertDialog.Builder(this)
-					.setTitle(getResources().
-						getString(R.string.dialog_no_saved))
-					.setPositiveButton(R.string.dialog_ok, 
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, 
-								int whichButton) {
-									// do nothing.
-								}
-						})
-					.create();
-		}
-		return null;
-	}
 
 }

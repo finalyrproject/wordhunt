@@ -9,8 +9,12 @@
         android:targetSdkVersion="23"
         />
 
-    <application android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme" android:allowBackup="true">
-        <activity android:name=".wordhunt">
+    <application android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme"
+		android:allowBackup="true">
+
+		<activity android:name=".wordhunt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,25 +23,25 @@
 
         <activity android:name=".Playwordhunt">
 			<intent-filter>
-				<action android:name="com.serwylo.lexica.action.NEW_GAME" />
+				<action android:name="com.wordhunt.wordhunt.action.NEW_GAME" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 			<intent-filter>
 				<category android:name="android.intent.category.DEFAULT" />
-				<action android:name="com.serwylo.lexica.action.RESTORE_GAME" />
+				<action android:name="com.wordhunt.wordhunt.action.RESTORE_GAME" />
 			</intent-filter>
         </activity>
 
         <activity android:name=".ScoreActivity">
 			<intent-filter>
-				<action android:name="com.serwylo.lexica.action.SCORE" />
+				<action android:name="com.wordhunt.wordhunt.action.SCORE" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
         </activity>
 
         <activity android:name=".wordhuntConfig" android:exported="false">
 			<intent-filter>
-				<action android:name="com.serwylo.lexica.action.CONFIGURE" />
+				<action android:name="com.wordhunt.wordhunt.action.CONFIGURE" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.PREFERENCES" />
 			</intent-filter>

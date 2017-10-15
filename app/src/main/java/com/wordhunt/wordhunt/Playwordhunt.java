@@ -40,34 +40,13 @@ public class Playwordhunt extends AppCompatActivity implements com.wordhunt.word
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(savedInstanceState != null) {
-			try {
-				restoreGame(savedInstanceState);
-			} catch (Exception e) {
-				// On API < 11, the above should work fine because onSaveInstanceState should be
-				// called before onPause. However, on API >= 11, onPause is always called _before_
-				// onSaveInstanceState. In these cases, we will have to resort to the preferences
-				// in order to restore our game (http://stackoverflow.com/a/28549669).
-				Log.e(TAG,"error restoring state from savedInstanceState, trying to look for saved game in preferences",e);
-				if (hasSavedGame()) {
-					restoreGame();
-				}
-			}
-			return;
-		}
-		try {
-			String action = getIntent().getAction();
+
+		String action = getIntent().getAction();
 			switch (action) {
-				case "com.wordhunt.wordhunt.RESTORE_GAME":
-					restoreGame();
-					break;
-				case "com.com.wordhunt.wordhunt.NEW_GAME":
+				case "com.wordhunt.wordhunt.NEW_GAME":
 					newGame();
 					break;
 			}
-		} catch (Exception e) {
-			Log.e(TAG,"top level",e);
-		}
     }
 
 	@Override
@@ -80,14 +59,9 @@ public class Playwordhunt extends AppCompatActivity implements com.wordhunt.word
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-			case R.id.rotate:
-				game.rotateBoard();	
-			break;
-			/*case R.id.save_game:
-				synch.abort();
-				saveGame();
-				finish();
-			break;*/
+			//case R.id.rotate:
+			//	game.rotateBoard();
+			//break;
 			case R.id.end_game:
 				game.endNow();
 		}
@@ -120,58 +94,6 @@ public class Playwordhunt extends AppCompatActivity implements com.wordhunt.word
 		lv.setFocusableInTouchMode(true);
 	}
 
-	private void restoreGame() {
-		clearSavedGame();
-		game = new Game(this, new GameSaverPersistent(this));
-		restoreGame(game);
-	}
-
-	private void restoreGame(Bundle bun) {
-		game = new Game(this,new GameSaverTransient(bun));
-		restoreGame(game);
-	}
-
-	private void restoreGame(Game game) {
-		wordhuntView lv = new wordhuntView(this,game);
-
-		if(synch != null) {
-			synch.abort();
-		}
-		synch = new Synchronizer();
-		synch.setCounter(game);
-		synch.addEvent(lv);
-		synch.setFinalizer(this);
-
-		ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
-			ViewGroup.LayoutParams.FILL_PARENT,
-			ViewGroup.LayoutParams.FILL_PARENT);
-		setContentView(lv,lp);
-		lv.setKeepScreenOn(true);
-		lv.setFocusableInTouchMode(true);
-	}
-
-	private void saveGame() {
-		if(game.getStatus() == Game.GameStatus.GAME_RUNNING) {
-			game.pause();
-
-			game.save(new GameSaverPersistent(this));
-
-		}
-	}
-
-	private void saveGame(Bundle state) {
-		if(game.getStatus() == Game.GameStatus.GAME_RUNNING) {
-			game.pause();
-			game.save(new GameSaverTransient(state));
-		}
-	}
-
-	public void onPause() {
-		super.onPause();
-		synch.abort();
-		saveGame();
-	}
-
 	public void onResume() {
 		super.onResume();
 		if(game == null) newGame();
@@ -195,22 +117,13 @@ public class Playwordhunt extends AppCompatActivity implements com.wordhunt.word
 		score();
 	}
 
-	private boolean hasSavedGame() {
-		return new GameSaverPersistent(this).hasSavedGame();
-	}
-
-	private void clearSavedGame() {
-		new GameSaverPersistent(this).clearSavedGame();
-	}
-
 	private void score() {
 		synch.abort();
-		clearSavedGame();
 
 		Bundle bun = new Bundle();
-		game.save(new GameSaverTransient(bun));
+	game.save(new GameSaverTransient(bun));
 
-		Intent scoreIntent = new Intent("com.serwylo.lexica.action.SCORE");
+		Intent scoreIntent = new Intent("com.wordhunt.wordhunt.action.SCORE");
 		scoreIntent.putExtras(bun);
 
 		startActivity(scoreIntent);
@@ -218,10 +131,5 @@ public class Playwordhunt extends AppCompatActivity implements com.wordhunt.word
 		finish();
 	}
 
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		saveGame(outState);
-	}
 
 }
