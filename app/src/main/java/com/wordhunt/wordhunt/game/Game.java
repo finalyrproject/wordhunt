@@ -171,10 +171,10 @@ public class Game implements Synchronizer.Counter {
 
 		switch(boardSize) {
 			case 16:
-				minWordLength = 3;
+				minWordLength = 2;
 			break;
 			case 25:
-				minWordLength = 4;
+				minWordLength = 2;
 			break;
 		}
 
