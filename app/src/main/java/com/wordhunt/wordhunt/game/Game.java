@@ -195,10 +195,10 @@ public class Game implements Synchronizer.Counter {
 
 		if(prefs.getString("boardSize","16").equals("25")) {
 			boardSize = 25;
-			minWordLength = 4;
+			minWordLength = 2;
 		} else {
 			boardSize = 16;
-			minWordLength = 3;
+			minWordLength = 2;
 		}
 
 		maxTimeRemaining = 100 * Integer.parseInt(
